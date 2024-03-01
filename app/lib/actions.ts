@@ -14,7 +14,7 @@ const FormSchema = z.object({
     .number()
     .gt(0, { message: 'Please enter an amount greater than $0.' }),
   status: z.enum(['pending', 'paid'], {
-    invalid_type_error: 'Please select an invoice status.',
+    invalid_type_error: 'Please select an invoice status..',
   }),
   date: z.string(),
 });
@@ -47,6 +47,8 @@ export async function createInvoice(prevState: State, formData: FormData) {
       message: 'Missing Fields. Failed to Create Invoice.',
     };
   }
+
+
  
   // Prepare data for insertion into the database
   const { customerId, amount, status } = validatedFields.data;
